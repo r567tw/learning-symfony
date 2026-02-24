@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Service\MessageGenerator; // 引入剛寫的 Service
 
 final class HelloController extends AbstractController
 {
@@ -49,6 +50,14 @@ final class HelloController extends AbstractController
             'searching_for' => $keyword,
             'method' => $request->getMethod(), // 取得請求方法 (GET/POST)
             'client_ip' => $request->getClientIp()
+        ]);
+    }
+
+    #[Route('/lucky', name: 'app_lucky')]
+    public function lucky(MessageGenerator $messageGenerator): JsonResponse
+    {
+        return $this->json([
+            'message' => $messageGenerator->getHappyMessage()
         ]);
     }
 }
