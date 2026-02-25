@@ -21,3 +21,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Service\TaxCalculator:
+        arguments:
+            # $taxRate: 0.05  # 手動告訴 Symfony，看到這個變數就填 0.05
+            $taxRate: '%env(float:SITE_TAX_RATE)%'  # 從環境變數讀取稅率

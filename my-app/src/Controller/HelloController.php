@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\MessageGenerator; // 引入剛寫的 Service
+use App\Service\TaxCalculator; // 引入剛寫的 Service
 
 final class HelloController extends AbstractController
 {
@@ -58,6 +59,15 @@ final class HelloController extends AbstractController
     {
         return $this->json([
             'message' => $messageGenerator->getHappyMessage()
+        ]);
+    }
+
+    #[Route('/tax/{amount}', name: 'app_tax_calculate')]
+    public function calculateTax(float $amount, TaxCalculator $taxCalculator): JsonResponse
+    {
+        return $this->json([
+            'amount' => $amount,
+            'taxed_amount' => $taxCalculator->calculate($amount)
         ]);
     }
 }
