@@ -1,0 +1,17 @@
+{# 這是 Twig 的註解 #}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>幸運號碼</title>
+</head>
+<body>
+    <h1>你好！{{ name }}</h1>
+    <p>你的幸運號碼是：<strong>{{ number }}</strong></p>
+
+    {% if number > 50 %}
+        <p>Number 大於 50</p>
+    {% else %}
+        <p>Number 沒有大於 50</p>
+    {% endif %}
+</body>
+</html>
