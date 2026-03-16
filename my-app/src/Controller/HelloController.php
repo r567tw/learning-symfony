@@ -20,26 +20,26 @@ final class HelloController extends AbstractController
         ]);
     }
 
-    #[Route('/task/{id}', name: 'app_task_show')]
-    public function show(int $id): JsonResponse
-    {
-        return $this->json([
-            'task_id' => $id,
-            'title' => "這是第 {$id} 號任務的標題",
-            'description' => '從網址抓到了 ID！'
-        ]);
-    }
+    // #[Route('/task/{id}', name: 'app_task_show')]
+    // public function show(int $id): JsonResponse
+    // {
+    //     return $this->json([
+    //         'task_id' => $id,
+    //         'title' => "這是第 {$id} 號任務的標題",
+    //         'description' => '從網址抓到了 ID！'
+    //     ]);
+    // }
 
-    #[Route('/task/{slug}/{id}', name: 'app_task_slug')]
-    public function showSlug(string $slug, int $id): JsonResponse
-    {
-        return $this->json([
-            'task_id' => $id,
-            'slug' => $slug,
-            'title' => "這是第 {$id} 號任務的標題",
-            'description' => '從網址抓到了 ID！'
-        ]);
-    }
+    // #[Route('/task/{slug}/{id}', name: 'app_task_slug')]
+    // public function showSlug(string $slug, int $id): JsonResponse
+    // {
+    //     return $this->json([
+    //         'task_id' => $id,
+    //         'slug' => $slug,
+    //         'title' => "這是第 {$id} 號任務的標題",
+    //         'description' => '從網址抓到了 ID！'
+    //     ]);
+    // }
 
     #[Route('/search', name: 'app_search')]
     public function search(Request $request): JsonResponse

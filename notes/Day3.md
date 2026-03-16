@@ -1,9 +1,3 @@
-恭喜你！手寫出第一個 Service 並看著它被自動注入（Autowiring），是理解 Symfony 最關鍵的一步。這代表你已經從「寫腳本」的思維進化到「設計系統」的思維了。
-
-以下是為你整理的 **Day 3 筆記**，你可以直接存入 `notes/day03.md`。
-
----
-
 # 📅 Day 3：依賴注入 (DI) 與服務容器 (Service Container)
 
 ## 1. 核心概念：Service (服務)
