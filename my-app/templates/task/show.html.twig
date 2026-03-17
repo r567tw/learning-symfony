@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>我的任務</h1>
+	<strong>{{ task.name }}</strong>
+	-
+	{{ task.completed ? '✅ 完成' : '⏳ 進行中' }}
+{% endblock %}

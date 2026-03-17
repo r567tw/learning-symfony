@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>我的任務清單</h1>
+
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.name }}</strong>
+                - {{ task.completed ? '✅ 完成' : '⏳ 進行中' }}
+
+                {# 重點：使用 path 函數產生連結，傳入 id 參數 #}
+                <a href="{{ path('app_task_show', {id: task.id}) }}">查看詳情</a>
+            </li>
+        {% else %}
+            <li>目前沒有任何任務，快去建立一個吧！</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -14,7 +14,7 @@ class TaskController extends AbstractController
     public function create(EntityManagerInterface $entityManager): Response
     {
         $task = new Task();
-        $task->setName('學習 Symfony Day 6');
+        $task->setName('學習 Drupal');
         $task->setCompleted(false);
 
         // 告訴 Doctrine 我想存這個物件
@@ -23,5 +23,22 @@ class TaskController extends AbstractController
         $entityManager->flush();
 
         return new Response('已建立任務，ID 為：' . $task->getId());
+    }
+
+    #[Route('/tasks', name: 'app_task_list')]
+    public function list(TaskRepository $taskRepository): Response
+    {
+        $tasks = $taskRepository->findAll();
+        return $this->render('task/list.html.twig', [
+            'tasks' => $tasks,
+        ]);
+    }
+
+    #[Route('/tasks/{id}', name: 'app_task_show')]
+    public function show(Task $task): Response
+    {
+        return $this->render('task/show.html.twig', [
+            'task' => $task,
+        ]);
     }
 }
