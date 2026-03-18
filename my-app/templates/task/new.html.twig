@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>新增任務</h1>
+
+    {# 這三行就能渲染出完整的 HTML 表單，包括 CSRF token #}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">儲存任務</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_task_list') }}">返回列表</a>
+{% endblock %}
