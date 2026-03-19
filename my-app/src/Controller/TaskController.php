@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\TaskType;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class TaskController extends AbstractController
 {
@@ -48,8 +49,8 @@ class TaskController extends AbstractController
 
     //     return new Response('已建立任務，ID 為：' . $task->getId());
     // }
-
     #[Route('/tasks', name: 'app_task_list')]
+    #[IsGranted('ROLE_ADMIN')] // 👈 只有具備 ROLE_USER 的登入者能看
     public function list(TaskRepository $taskRepository): Response
     {
         $tasks = $taskRepository->findAll();
